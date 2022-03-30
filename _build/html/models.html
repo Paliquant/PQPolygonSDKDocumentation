@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Models and Models &#8212; PQPolygonSDK.jl</title>
+    <title>Models and methods &#8212; PQPolygonSDK.jl</title>
     
   <link href="_static/css/theme.css" rel="stylesheet">
   <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -54,7 +54,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Examples" href="examples.html" />
-    <link rel="prev" title="Installation and Requirements" href="installation.html" />
+    <link rel="prev" title="Installation and requirements" href="installation.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -101,12 +101,12 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="installation.html">
-   Installation and Requirements
+   Installation and requirements
   </a>
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   Models and Models
+   Models and methods
   </a>
  </li>
  <li class="toctree-l1">
@@ -196,6 +196,29 @@ const thebe_selector_output = ".output, .cell_output"
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#build-a-user-model">
+   Build a user model
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#endpoint-models">
+   Endpoint models
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#encode-a-url-string">
+   Encode a URL string
+  </a>
+ </li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -203,19 +226,68 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Models and Models</h1>
+                <h1>Models and methods</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#build-a-user-model">
+   Build a user model
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#endpoint-models">
+   Endpoint models
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#encode-a-url-string">
+   Encode a URL string
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="models-and-models">
-<h1>Models and Models<a class="headerlink" href="#models-and-models" title="Permalink to this headline">¶</a></h1>
+  <div class="tex2jax_ignore mathjax_ignore section" id="models-and-methods">
+<h1>Models and methods<a class="headerlink" href="#models-and-methods" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="build-a-user-model">
+<h2>Build a user model<a class="headerlink" href="#build-a-user-model" title="Permalink to this headline">¶</a></h2>
+<p>All <a class="reference external" href="https://polygon.io">Polygon.io</a> application programming interface (API) calls in the <code class="docutils literal notranslate"><span class="pre">PQPolygonSDK.jl</span></code> package are started by creating a <code class="docutils literal notranslate"><span class="pre">PQPolygonSDKUserModel</span></code> object using the function:</p>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="p">(</span><span class="n">userModelType</span><span class="o">::</span><span class="kt">Type</span><span class="p">{</span><span class="kt">PQPolygonSDKUserModel</span><span class="p">},</span> 
+    <span class="n">options</span><span class="o">::</span><span class="kt">Dict</span><span class="p">{</span><span class="kt">String</span><span class="p">,</span><span class="kt">Any</span><span class="p">})</span> <span class="o">-&gt;</span> <span class="n">PQPolygonSDKUserModel</span>
+</pre></div>
+</div>
+<p>where <code class="docutils literal notranslate"><span class="pre">options</span></code> dictionary holds <code class="docutils literal notranslate"><span class="pre">email</span></code> and <code class="docutils literal notranslate"><span class="pre">apikey</span></code> key-value pairs.</p>
+</div>
+<div class="section" id="endpoint-models">
+<h2>Endpoint models<a class="headerlink" href="#endpoint-models" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">PQPolygonSDKUserModel</span></code> object can then be passed as an argument to a <code class="docutils literal notranslate"><span class="pre">model</span></code> function:</p>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="p">(</span><span class="n">apiModelType</span><span class="o">::</span><span class="kt">Type</span><span class="p">{</span><span class="kt">T</span><span class="p">},</span> <span class="n">userModel</span><span class="o">::</span><span class="kt">PQPolygonSDKUserModel</span><span class="p">,</span> 
+        <span class="n">options</span><span class="o">::</span><span class="kt">Dict</span><span class="p">{</span><span class="kt">String</span><span class="p">,</span><span class="kt">Any</span><span class="p">})</span> <span class="o">-&gt;</span> <span class="n">AbstractPolygonEndpointModel</span> <span class="k">where</span> <span class="kt">T</span><span class="o">&lt;:</span><span class="kt">AbstractPolygonEndpointModel</span>
+</pre></div>
+</div>
+<p>to build an endpoint-specific model where the information for a particular endpoint is passed into the <code class="docutils literal notranslate"><span class="pre">model</span></code> method via an <code class="docutils literal notranslate"><span class="pre">options</span></code> dictionary.</p>
+</div>
+<div class="section" id="encode-a-url-string">
+<h2>Encode a URL string<a class="headerlink" href="#encode-a-url-string" title="Permalink to this headline">¶</a></h2>
+<p>The endpoint specific model is then used to create the specific URL for the call using the <code class="docutils literal notranslate"><span class="pre">url</span></code> function:</p>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># create the URL string for this endpoint -</span>
+<span class="n">my_stock_url_string</span> <span class="o">=</span> <span class="n">url</span><span class="p">(</span><span class="n">POLYGON_URL_STRING</span><span class="p">,</span> <span class="n">stock_endpoint_model</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
 </div>
 
     <script type="text/x-thebe-config">
@@ -247,7 +319,7 @@ const thebe_selector_output = ".output, .cell_output"
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Installation and Requirements</p>
+            <p class="prev-next-title">Installation and requirements</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="examples.html" title="next page">
