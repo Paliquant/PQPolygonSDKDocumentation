@@ -216,6 +216,11 @@ const thebe_selector_output = ".output, .cell_output"
    Encode a URL string
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#make-an-api-call">
+   Make an API call
+  </a>
+ </li>
 </ul>
 
             </nav>
@@ -249,6 +254,11 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#encode-a-url-string">
    Encode a URL string
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#make-an-api-call">
+   Make an API call
   </a>
  </li>
 </ul>
@@ -287,6 +297,16 @@ const thebe_selector_output = ".output, .cell_output"
 <span class="n">my_stock_url_string</span> <span class="o">=</span> <span class="n">url</span><span class="p">(</span><span class="n">POLYGON_URL_STRING</span><span class="p">,</span> <span class="n">stock_endpoint_model</span><span class="p">);</span>
 </pre></div>
 </div>
+</div>
+<div class="section" id="make-an-api-call">
+<h2>Make an API call<a class="headerlink" href="#make-an-api-call" title="Permalink to this headline">¶</a></h2>
+<p>Finally, the URL and the API model type are used to make a call against the
+<a class="reference external" href="https://polygon.io">Polygon.io</a> API:</p>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># make the API call -</span>
+<span class="p">(</span><span class="n">h_stock</span><span class="p">,</span> <span class="n">df_stock</span><span class="p">)</span> <span class="o">=</span> <span class="n">api</span><span class="p">(</span><span class="n">PolygonAggregatesEndpointModel</span><span class="p">,</span> <span class="n">my_stock_url_string</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">api</span></code> method returns two pieces of data, a header dictionary holding technical information about the call (and potentially error information of the call failed). The data for the call is returned as a <a class="reference external" href="https://dataframes.juliadata.org/stable/">DataFrame</a>.</p>
 </div>
 </div>
 
